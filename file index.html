@@ -7,88 +7,161 @@
   <style>
     :root {
       --bg: #070b16;
-      --bg2: #0b1020;
-      --text: #e8eeff;
-      --muted: #9aa7d1;
-      --line: rgba(255,255,255,.14);
-      --glass: rgba(255,255,255,.08);
-      --accent: #6fe6ff;
-      --accent2: #8a7dff;
-      --accent3: #40f7b1;
+      --bg2: #0d1224;
+      --text: #ebf1ff;
+      --muted: #a2afd8;
+      --line: rgba(255, 255, 255, 0.14);
+      --glass: rgba(255, 255, 255, 0.06);
+      --accent: #73e5ff;
+      --accent2: #9082ff;
+      --accent3: #42efb4;
+      --radius: 18px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(1200px 500px at 20% 0%, rgba(79,117,255,.18), transparent 60%),
-                  radial-gradient(1000px 500px at 90% 5%, rgba(65,247,178,.12), transparent 62%),
-                  linear-gradient(180deg,var(--bg),var(--bg2));
-      color:var(--text);
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 480px at 15% 0%, rgba(115, 229, 255, 0.12), transparent 65%),
+        radial-gradient(1100px 500px at 90% 5%, rgba(144, 130, 255, 0.14), transparent 62%),
+        radial-gradient(980px 440px at 65% 88%, rgba(66, 239, 180, 0.09), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    .deck{max-width:1200px;margin:0 auto;padding:28px 24px 80px;display:grid;gap:22px}
-    .slide{
-      min-height:78vh;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background: linear-gradient(140deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+
+    .deck {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 28px 24px 72px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .slide {
+      min-height: 76vh;
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 26px 60px rgba(0, 0, 0, 0.34);
       backdrop-filter: blur(16px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 24px 60px rgba(0,0,0,.35);
-      padding:42px;
-      display:grid;
-      grid-template-columns: repeat(12,1fr);
-      gap:18px;
-      position:relative;
-      overflow:hidden;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
     }
-    h1,h2,h3,p{margin:0}
-    .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-    .title{grid-column:span 7;font-size:56px;line-height:1.03;letter-spacing:-.03em;font-weight:780}
-    .subtitle{grid-column:span 6;color:var(--muted);margin-top:14px;line-height:1.5}
-    .card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:18px;backdrop-filter:blur(14px)}
-    .row{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;grid-column:1/-1}
-    .metric{font-size:32px;font-weight:750}.label{color:var(--muted);font-size:13px}
-    .bars{display:flex;align-items:flex-end;gap:12px;height:170px}
-    .bar{width:28px;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,var(--accent),#2899ff)}
-    .lineChart{height:180px;width:100%}
-    .pie{width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--accent) 0 40%, var(--accent2) 40% 72%, var(--accent3) 72% 100%);}
-    .feature{grid-column:span 3}
-    .center{display:grid;place-items:center}
-    .small{font-size:14px;color:var(--muted);line-height:1.45}
-    .step{grid-column:span 3}
-    .table{width:100%;border-collapse:collapse;font-size:13px}
-    .table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
-    .ask{font-size:72px;font-weight:800;letter-spacing:-.04em;color:#fff;text-shadow:0 0 28px rgba(111,230,255,.25)}
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10%;
+      pointer-events: none;
+      background: radial-gradient(400px 220px at 80% 15%, rgba(115, 229, 255, 0.15), transparent 70%);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .kicker {
+      grid-column: 1 / -1;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .title {
+      grid-column: span 8;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      font-weight: 780;
+    }
+
+    .subtitle {
+      grid-column: span 7;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--glass);
+      padding: 18px;
+      backdrop-filter: blur(14px);
+    }
+
+    .metric { font-size: 32px; font-weight: 760; }
+    .label, .small { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    .bars { display: flex; align-items: flex-end; gap: 12px; height: 172px; }
+    .bar { width: 30px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, var(--accent), #2e97ff); }
+
+    .line-chart { width: 100%; height: 190px; }
+    .pie { width: 190px; height: 190px; border-radius: 50%; background: conic-gradient(var(--accent) 0 40%, var(--accent2) 40% 72%, var(--accent3) 72% 100%); }
+
+    .grid-3 { grid-column: span 4; }
+    .grid-4 { grid-column: span 3; }
+    .grid-5 { grid-column: span 5; }
+    .grid-6 { grid-column: span 6; }
+    .grid-7 { grid-column: span 7; }
+    .grid-8 { grid-column: span 8; }
+    .grid-12 { grid-column: 1 / -1; }
+
+    .center { display: grid; place-items: center; }
+    .ask { font-size: clamp(46px, 6vw, 76px); font-weight: 800; letter-spacing: -0.04em; text-shadow: 0 0 28px rgba(115, 229, 255, 0.24); }
+
+    .table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table th, .table td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; }
+
+    @media (max-width: 920px) {
+      .slide { padding: 28px; min-height: auto; }
+      .title, .subtitle, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8 { grid-column: 1 / -1; }
+    }
   </style>
 </head>
 <body>
   <main class="deck">
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 01 · Cover</p><h1 class="title">Nexora Capital</h1><p class="subtitle">Automated savings + micro-investing for ambitious young professionals in emerging markets.</p><div class="card center" style="grid-column:8/-1;grid-row:2/span 2"><div class="metric">$0 ➜ Wealth</div><p class="small">From first paycheck to long-term portfolio growth.</p></div></section>
+    <section class="slide">
+      <p class="kicker">Slide 01 · Cover</p>
+      <h1 class="title">Nexora Capital</h1>
+      <p class="subtitle">Automated savings + micro-investing for ambitious young professionals in emerging markets.</p>
+      <article class="card grid-5 center">
+        <p class="metric">$0 → Wealth</p>
+        <p class="small">From first paycheck to long-term portfolio growth in one intuitive app.</p>
+      </article>
+    </section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 02 · Problem</p><h2 class="title" style="font-size:42px">Most young earners are one emergency away from financial stress.</h2><div class="card" style="grid-column:1/span 4"><div class="metric">68%</div><p class="label">have &lt; 3 months emergency savings</p></div><div class="card" style="grid-column:5/span 4"><div class="metric">54%</div><p class="label">say investing feels too complex</p></div><div class="card" style="grid-column:9/span 4"><div class="metric">2.4x</div><p class="label">higher churn in banks with poor UX</p></div></section>
+    <section class="slide"><p class="kicker">Slide 02 · Problem</p><h2 class="title">Most young earners are one emergency away from financial stress.</h2><article class="card grid-3"><p class="metric">68%</p><p class="label">have &lt;3 months emergency savings</p></article><article class="card grid-3"><p class="metric">54%</p><p class="label">say investing feels too complex</p></article><article class="card grid-3"><p class="metric">2.4x</p><p class="label">higher churn in legacy bank apps</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 03 · Opportunity</p><h2 class="title" style="font-size:42px">$120B+ addressable digital savings & investing opportunity.</h2><div class="card" style="grid-column:1/span 8"><div class="bars"><div class="bar" style="height:50px"></div><div class="bar" style="height:78px"></div><div class="bar" style="height:102px"></div><div class="bar" style="height:136px"></div><div class="bar" style="height:165px"></div></div><p class="small">TAM growth 2026–2030 driven by mobile-first investing behavior.</p></div><div class="card" style="grid-column:9/span 4"><div class="metric">42M</div><p class="label">target users in phase-1 markets</p></div></section>
+    <section class="slide"><p class="kicker">Slide 03 · Opportunity</p><h2 class="title">$120B+ addressable digital savings and investing opportunity.</h2><article class="card grid-8"><div class="bars"><div class="bar" style="height:42px"></div><div class="bar" style="height:70px"></div><div class="bar" style="height:95px"></div><div class="bar" style="height:126px"></div><div class="bar" style="height:162px"></div></div><p class="small">TAM acceleration from 2026 to 2030 across Africa-first and adjacent markets.</p></article><article class="card grid-4"><p class="metric">42M</p><p class="label">phase-1 target users</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 04 · Solution</p><h2 class="title" style="font-size:42px">A single app to save, invest, and track goals—without friction.</h2><div class="card" style="grid-column:1/span 7"><svg class="lineChart" viewBox="0 0 600 220"><polyline fill="none" stroke="#6fe6ff" stroke-width="4" points="20,180 130,150 220,160 330,120 430,90 560,45"/><polyline fill="none" stroke="#8a7dff" stroke-width="3" points="20,190 130,170 220,150 330,132 430,120 560,108"/></svg></div><div class="card" style="grid-column:8/span 5"><p class="small">Smart autosave rules, guided portfolios, and goal vaults presented in a playful but trusted product experience.</p></div></section>
+    <section class="slide"><p class="kicker">Slide 04 · Solution</p><h2 class="title">A single app to save, invest, and hit life goals—without friction.</h2><article class="card grid-7"><svg class="line-chart" viewBox="0 0 600 220"><polyline fill="none" stroke="#73e5ff" stroke-width="4" points="20,180 128,152 224,158 325,122 432,88 562,40"/><polyline fill="none" stroke="#9082ff" stroke-width="3" points="20,193 128,173 224,154 325,136 432,120 562,103"/></svg></article><article class="card grid-5"><p class="small">Smart autosave rules, guided ETF portfolios, and goal vaults in a trusted, gamified experience.</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 05 · Product Features</p><div class="card feature"><h3>AutoSave Engine</h3><p class="small">Round-ups, salary sweeps, behavior triggers.</p></div><div class="card feature"><h3>Micro-Investing</h3><p class="small">Fractional exposure to diversified ETFs.</p></div><div class="card feature"><h3>Goal Vaults</h3><p class="small">Rent, travel, emergency, and custom goals.</p></div><div class="card feature"><h3>Growth Streaks</h3><p class="small">Gamified milestones and habit loops.</p></div></section>
+    <section class="slide"><p class="kicker">Slide 05 · Product Features</p><article class="card grid-4"><h3>AutoSave Engine</h3><p class="small">Round-ups, salary sweeps, and rule-based transfers.</p></article><article class="card grid-4"><h3>Micro-Investing</h3><p class="small">Diversified, fractional portfolios aligned to user risk.</p></article><article class="card grid-4"><h3>Goal Vaults</h3><p class="small">Rent, travel, emergency funds, and custom goals.</p></article><article class="card grid-4"><h3>Growth Streaks</h3><p class="small">Habit loops and milestone rewards that improve retention.</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 06 · How It Works</p><div class="card step"><h3>1. Connect</h3><p class="small">Link salary account in 60 seconds.</p></div><div class="card step"><h3>2. Automate</h3><p class="small">Set smart savings and risk profile.</p></div><div class="card step"><h3>3. Grow</h3><p class="small">Weekly auto-invest into model portfolios.</p></div><div class="card step"><h3>4. Achieve</h3><p class="small">Unlock goals with clear progress insights.</p></div></section>
+    <section class="slide"><p class="kicker">Slide 06 · How It Works</p><article class="card grid-4"><h3>1 · Connect</h3><p class="small">Securely link salary account in under 60 seconds.</p></article><article class="card grid-4"><h3>2 · Personalize</h3><p class="small">Set goal amounts and risk profile.</p></article><article class="card grid-4"><h3>3 · Automate</h3><p class="small">Autosave and weekly micro-investments execute in background.</p></article><article class="card grid-4"><h3>4 · Grow</h3><p class="small">Live dashboards show compounding progress toward each goal.</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 07 · Market Segmentation</p><div class="card center" style="grid-column:1/span 5"><div class="pie"></div></div><div class="card" style="grid-column:6/-1"><p class="small"><b style="color:#6fe6ff">40%</b> Early-career professionals<br><b style="color:#8a7dff">32%</b> Freelancers / creators<br><b style="color:#40f7b1">28%</b> Side-hustle entrepreneurs</p></div></section>
+    <section class="slide"><p class="kicker">Slide 07 · Market Segmentation</p><article class="card grid-5 center"><div class="pie" aria-label="market segmentation pie chart"></div></article><article class="card grid-7"><p class="small"><strong style="color:#73e5ff">40%</strong> Early-career professionals<br><strong style="color:#9082ff">32%</strong> Freelancers and creators<br><strong style="color:#42efb4">28%</strong> Side-hustle entrepreneurs</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 08 · Business Model</p><div class="card" style="grid-column:1/span 4"><div class="metric">$3/mo</div><p class="label">premium subscription</p></div><div class="card" style="grid-column:5/span 4"><div class="metric">0.6%</div><p class="label">average investment spread</p></div><div class="card" style="grid-column:9/span 4"><div class="metric">1.1%</div><p class="label">interchange + partner fees</p></div></section>
+    <section class="slide"><p class="kicker">Slide 08 · Business Model</p><article class="card grid-4"><p class="metric">$3 / mo</p><p class="label">premium subscription</p></article><article class="card grid-4"><p class="metric">0.6%</p><p class="label">investment spread</p></article><article class="card grid-4"><p class="metric">1.1%</p><p class="label">interchange + partner fees</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 09 · Traction</p><div class="card" style="grid-column:1/span 8"><svg class="lineChart" viewBox="0 0 600 220"><polyline fill="none" stroke="#40f7b1" stroke-width="4" points="15,190 95,180 160,165 240,130 330,100 420,72 520,40"/></svg><p class="small">Simulated beta: 9 months to 120k signups with 37% 3-month retention.</p></div><div class="card" style="grid-column:9/span 4"><div class="metric">$8.4M</div><p class="label">AUM</p><div class="metric" style="margin-top:10px">72k</div><p class="label">MAU</p></div></section>
+    <section class="slide"><p class="kicker">Slide 09 · Traction (Simulated)</p><article class="card grid-8"><svg class="line-chart" viewBox="0 0 600 220"><polyline fill="none" stroke="#42efb4" stroke-width="4" points="20,192 90,182 170,166 250,136 330,102 420,71 530,38"/></svg><p class="small">Simulated beta: 120k signups in 9 months with 37% three-month retention.</p></article><article class="card grid-4"><p class="metric">$8.4M</p><p class="label">AUM</p><p class="metric" style="margin-top:10px">72k</p><p class="label">MAU</p><p class="metric" style="margin-top:10px">31%</p><p class="label">D90 retention</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 10 · Competitive Landscape</p><div class="card" style="grid-column:1/-1"><table class="table"><tr><th>Provider</th><th>Auto-Save</th><th>Micro-Invest</th><th>Goal UX</th><th>Gamification</th></tr><tr><td>Traditional Banks</td><td>Limited</td><td>No</td><td>Basic</td><td>No</td></tr><tr><td>Generic Wallet Apps</td><td>Partial</td><td>Limited</td><td>Medium</td><td>Low</td></tr><tr><td><b>Nexora</b></td><td><b>Advanced</b></td><td><b>Yes</b></td><td><b>Best-in-class</b></td><td><b>High</b></td></tr></table></div></section>
+    <section class="slide"><p class="kicker">Slide 10 · Competitive Landscape</p><article class="card grid-12"><table class="table"><thead><tr><th>Provider</th><th>Auto-Save</th><th>Micro-Invest</th><th>Goal UX</th><th>Gamification</th></tr></thead><tbody><tr><td>Traditional Banks</td><td>Limited</td><td>No</td><td>Basic</td><td>No</td></tr><tr><td>Generic Wallet Apps</td><td>Partial</td><td>Limited</td><td>Medium</td><td>Low</td></tr><tr><td><strong>Nexora</strong></td><td><strong>Advanced</strong></td><td><strong>Yes</strong></td><td><strong>Best-in-class</strong></td><td><strong>High</strong></td></tr></tbody></table></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 11 · Go-To-Market</p><div class="card" style="grid-column:1/span 3"><h3>Campus Ambassadors</h3></div><div class="card" style="grid-column:4/span 3"><h3>Payroll Partners</h3></div><div class="card" style="grid-column:7/span 3"><h3>Creator Channels</h3></div><div class="card" style="grid-column:10/span 3"><h3>Referral Loops</h3></div></section>
+    <section class="slide"><p class="kicker">Slide 11 · Go-To-Market Strategy</p><article class="card grid-3"><h3>Campus Ambassadors</h3><p class="small">Acquire first-time earners early.</p></article><article class="card grid-3"><h3>Payroll Partnerships</h3><p class="small">Trigger savings at salary entry point.</p></article><article class="card grid-3"><h3>Creator Channels</h3><p class="small">Scale trust with financial educators.</p></article><article class="card grid-3"><h3>Referral Loops</h3><p class="small">Reward milestones and social invites.</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 12 · Financial Projections</p><div class="card" style="grid-column:1/span 8"><div class="bars"><div class="bar" style="height:35px"></div><div class="bar" style="height:62px"></div><div class="bar" style="height:92px"></div><div class="bar" style="height:125px"></div><div class="bar" style="height:162px"></div></div><p class="small">Revenue trajectory (2026–2030) with improving margin profile.</p></div><div class="card" style="grid-column:9/span 4"><div class="metric">$24M</div><p class="label">2030 projected revenue</p></div></section>
+    <section class="slide"><p class="kicker">Slide 12 · Financial Projections</p><article class="card grid-8"><div class="bars"><div class="bar" style="height:34px"></div><div class="bar" style="height:62px"></div><div class="bar" style="height:92px"></div><div class="bar" style="height:126px"></div><div class="bar" style="height:165px"></div></div><p class="small">Projected revenue 2026–2030 with growing operating leverage.</p></article><article class="card grid-4"><p class="metric">$24M</p><p class="label">2030 projected revenue</p><p class="metric" style="margin-top:10px">26%</p><p class="label">EBITDA margin target</p></article></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 13 · Vision</p><h2 class="title" style="font-size:46px">Build the default wealth layer for the next 200M emerging market professionals.</h2><p class="subtitle">Nexora turns small, consistent actions into generational financial confidence.</p></section>
+    <section class="slide"><p class="kicker">Slide 13 · Vision</p><h2 class="title">Build the default wealth layer for the next 200M emerging market professionals.</h2><p class="subtitle">Nexora transforms tiny daily actions into long-term financial confidence and mobility.</p></section>
 
-    <section class="slide"><p class="kicker" style="grid-column:1/-1">Slide 14 · Investment Ask</p><div class="ask" style="grid-column:1/span 7">Raising $3.5M Seed</div><div class="card" style="grid-column:8/-1"><p class="small">Use of funds: product expansion (45%), market launch (35%), compliance and operations (20%). Runway: 24 months.</p></div></section>
+    <section class="slide"><p class="kicker">Slide 14 · Investment Ask</p><h2 class="ask grid-7">Raising $3.5M Seed</h2><article class="card grid-5"><p class="small">Use of funds: product (45%), growth (35%), compliance & operations (20%). Runway: 24 months. Milestone: 500k funded accounts.</p></article></section>
   </main>
 </body>
 </html>
